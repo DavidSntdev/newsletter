@@ -1,48 +1,44 @@
 import "./App.css";
-import illustrationMobile from "./assets/images/illustration-sign-up-mobile.svg";
-import iconList from "./assets/images/icon-list.svg";
+import { useState } from "react";
+import NotEnviado from "./components/NotEnviado";
+import Enviado from "./components/Enviado";
 
 function App() {
+  const [enviado, setEnviado] = useState(false);
+
+  const enviar = () => {
+    enviado ? setEnviado(false) : setEnviado(true);
+  };
   return (
-    <>
-      <div className="w-full">
-        <img
-          src={illustrationMobile}
-          alt="Illustration"
-          className="w-full h-auto"
-        />
-      </div>
-      <div className="p-5 py-10">
-        <h1 className="text-5xl font-bold h-16">Stay updated!</h1>
-        <p className="py-5">
-          Join 60,000+ product managers receiving monthly updates on:
-        </p>
-        <div className="grid grid-rows-3 gap-4 py-3">
-          <div className="flex items-start py-2">
-            <img src={iconList} alt="" className="mr-2" />
-            <p className="pl-1">Product discovery and building what matters</p>
+    <main className="pb-10">
+      {!enviado ? (
+        <>
+          <NotEnviado />
+          <div className="px-5 pt-6">
+            <button
+              className="h-16 w-full text-white text-lg font-normal rounded-md"
+              style={{ backgroundColor: "var(--colorDarkSlateGrey)" }}
+              onClick={enviar}
+            >
+              Subscribe to monthly newsletter
+            </button>
           </div>
-          <div className="flex items-start py-2">
-            <img src={iconList} alt="" className="mr-2" />
-            <p className="pl-1">Measuring to ensure updates are a success</p>
+        </>
+      ) : (
+        <>
+          <Enviado />
+          <div className="px-5 pt-60">
+            <button
+              className="h-16 w-full text-white text-lg font-normal rounded-md"
+              style={{ backgroundColor: "var(--colorDarkSlateGrey)" }}
+              onClick={enviar}
+            >
+              Dismiss message
+            </button>
           </div>
-          <div className="flex items-start py-2">
-            <img src={iconList} alt="" className="mr-2" />
-            <p className="pl-1">And much more!</p>
-          </div>
-        </div>
-      </div>
-      <div>
-        <label htmlFor="email">Email adress</label>
-        <input
-          type="email"
-          name=""
-          id="email"
-          placeholder="email@company.com"
-        />
-        <button>Subscribe to monthly newsletter</button>
-      </div>
-    </>
+        </>
+      )}
+    </main>
   );
 }
 
