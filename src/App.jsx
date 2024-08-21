@@ -1,4 +1,3 @@
-import "./App.css";
 import { useState, useEffect } from "react";
 import Image from "./components/Image";
 import Enviado from "./components/Enviado";
@@ -10,7 +9,7 @@ function App() {
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
   const enviar = () => {
-    setEnviado(!enviado);
+    setEnviado(true); // Altera para true apenas se o email for válido
   };
 
   useEffect(() => {
@@ -37,24 +36,7 @@ function App() {
             <Image />
             <div className="md:flex md:flex-col md:justify-center">
               <Copy />
-              <Form />
-              <div className="px-5 pt-6">
-                <button
-                  className="h-16 w-full text-white text-lg font-normal rounded-md"
-                  style={{ backgroundColor: "var(--colorDarkSlateGrey)" }}
-                  onClick={enviar}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.backgroundColor =
-                      "var(--colorTomato)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.backgroundColor =
-                      "var(--colorDarkSlateGrey)")
-                  }
-                >
-                  Subscribe to monthly newsletter
-                </button>
-              </div>
+              <Form onSubmit={enviar} />
             </div>
           </div>
         </>
@@ -64,9 +46,9 @@ function App() {
             <Enviado />
             <div className="px-5 md:pt-5 pt-60">
               <button
-                className="h-16 w-full text-white text-lg md:text-sm font-normal md:h-12 rounded-md"
+                className="h-16 w-full text-white text-lg md:text-sm font-normal md:h-12 rounded-md hover:shadow-lg hover:shadow-red-300"
                 style={{ backgroundColor: "var(--colorDarkSlateGrey)" }}
-                onClick={enviar}
+                onClick={() => setEnviado(false)}
                 onMouseEnter={(e) =>
                   (e.currentTarget.style.backgroundColor = "var(--colorTomato)")
                 }
