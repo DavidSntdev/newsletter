@@ -26,3 +26,9 @@
   color: var(--colorDarkSlateGrey);
   background-color: var(--colorWhite);
 }
+
+@media (min-width: 768px) {
+  main {
+    width: 900px;
+  }
+}

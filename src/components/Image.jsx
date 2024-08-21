@@ -1,14 +1,12 @@
-import Copy from "./Copy";
-import Form from "./Form";
 import illustrationMobile from "../assets/images/illustration-sign-up-mobile.svg";
 import illustrationDesktop from "../assets/images/illustration-sign-up-desktop.svg";
 
-function NotEnviado() {
+function Image() {
   return (
     <>
-      <div className="w-full">
+      <div className="w-full md:order-2">
         <picture>
-          <source srcSet={illustrationDesktop} media="(min-width: 1000px)" />
+          <source srcSet={illustrationDesktop} media="(min-width: 768px)" />
           <img
             src={illustrationMobile}
             alt="Illustration"
@@ -16,10 +14,8 @@ function NotEnviado() {
           />
         </picture>
       </div>
-      <Copy />
-      <Form />
     </>
   );
 }
 
-export default NotEnviado;
+export default Image;
