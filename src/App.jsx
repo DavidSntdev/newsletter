@@ -9,7 +9,7 @@ function App() {
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
   const enviar = () => {
-    setEnviado(true); // Altera para true apenas se o email for válido
+    setEnviado(true); 
   };
 
   useEffect(() => {
